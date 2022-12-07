@@ -1,3 +1,5 @@
+require: rubocop-rails
+
 AllCops:
   Exclude:
     - 'bin/bundle'
@@ -27,3 +29,4 @@ Metrics/CyclomaticComplexity:
 
 Metrics/BlockLength:
   Max: 47
+

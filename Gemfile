@@ -22,6 +22,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rails_best_practices', '~> 1.23', '>= 1.23.2'
   gem 'rubocop', '~> 1.39'
+  gem 'rubocop-rails', '~> 2.17', '>= 2.17.3'
 end
 
 group :development do
