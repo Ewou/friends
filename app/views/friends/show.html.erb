@@ -3,8 +3,7 @@
 <%= render @friend %>
 
 <div>
-  <%= link_to "Edit this friend", edit_friend_path(@friend) %> |
-  <%= link_to "Back to friends", friends_path %>
-
-  <%= button_to "Destroy this friend", @friend, method: :delete %>
+  <%= link_to "Edit", edit_friend_path(@friend), class: 'btn btn-success', style: 'border-radius:0px;' %>
+  <%= link_to "Back", friends_path, class: 'btn btn-dark', style: 'border-radius:0px;' %>
+  <%= link_to "Delete", @friend, class: 'btn btn-danger', style: 'border-radius:0px;', data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this item?' } %>
 </div>
