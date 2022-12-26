@@ -1,0 +1,30 @@
+<div id="friends" class="container">
+  <table class="table align-middle">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Nickname</th>
+      <th>Surname</th>
+      <th>Email</th>
+      <th>Where did we meet?</th>
+      <th class="text-center">Actions</th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <% @friends.each do |friend| %>
+      <tr>
+        <td><%= friend.name %></td>
+        <td><%= friend.nickname %></td>
+        <td><%= friend.surname %></td>
+        <td><%= friend.email %></td>
+        <td><%= friend.friend_place %></td>
+        <td class="text-center">
+          <%= link_to "Show", friend, class: 'btn btn-info', style: 'border-radius:0px;' %>
+          <%= link_to "Edit", edit_friend_path(friend), class: 'btn btn-success', style: 'border-radius:0px;' %>
+          <%= link_to "Delete", @friend, class: 'btn btn-danger', style: 'border-radius:0px;', data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to delete this item?' } %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

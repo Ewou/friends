@@ -1,14 +1,15 @@
-class FriendsController < ApplicationController
-  before_action :set_friend, only: %i[ show edit update destroy ]
+# frozen_string_literal: true
 
+class FriendsController < ApplicationController
+  before_action :set_friend, only: %i[show edit update destroy]
+  layout 'application'
   # GET /friends or /friends.json
   def index
     @friends = Friend.all
   end
 
   # GET /friends/1 or /friends/1.json
-  def show
-  end
+  def show; end
 
   # GET /friends/new
   def new
@@ -16,8 +17,7 @@ class FriendsController < ApplicationController
   end
 
   # GET /friends/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /friends or /friends.json
   def create
@@ -25,7 +25,7 @@ class FriendsController < ApplicationController
 
     respond_to do |format|
       if @friend.save
-        format.html { redirect_to friend_url(@friend), notice: "Friend was successfully created." }
+        format.html { redirect_to friend_url(@friend), notice: 'Friend was successfully created.' }
         format.json { render :show, status: :created, location: @friend }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class FriendsController < ApplicationController
   def update
     respond_to do |format|
       if @friend.update(friend_params)
-        format.html { redirect_to friend_url(@friend), notice: "Friend was successfully updated." }
+        format.html { redirect_to friend_url(@friend), notice: 'Friend was successfully updated.' }
         format.json { render :show, status: :ok, location: @friend }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,40 @@ class FriendsController < ApplicationController
     @friend.destroy
 
     respond_to do |format|
-      format.html { redirect_to friends_url, notice: "Friend was successfully destroyed." }
+      format.html { redirect_to friends_url, notice: 'Friend was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_friend
-      @friend = Friend.find(params[:id])
-    end
+  def party
+    @friends = Friend.party
+  end
 
-    # Only allow a list of trusted parameters through.
-    def friend_params
-      params.require(:friend).permit(:name, :nickname, :surname, :email, :friend_place)
-    end
+  def work
+    @friends = Friend.work
+  end
+
+  def holidays
+    @friends = Friend.holidays
+  end
+
+  def school
+    @friends = Friend.school
+  end
+
+  def other
+    @friends = Friend.other
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_friend
+    @friend = Friend.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def friend_params
+    params.require(:friend).permit(:name, :nickname, :surname, :email, :friend_place)
+  end
 end
